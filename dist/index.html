@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.4.0"><title>Welcome to Astro.</title><link rel="stylesheet" href="/_astro/index.CqZ0hsmY.css" /></head> <body class="bg-White">  <main class="mx-auto max-w-96 px-4 sm:max-w-3xl"> <header class="mt-6 flex items-center justify-between"> <h1 aria-label="Notifications" class="flex items-center gap-2 text-2xl font-bold text-VeryDarkBlue">
+Notifications <span id="number" class="rounded-md bg-Blue px-3 py-1 text-sm text-White"></span> </h1> <button aria-label="Mark all as read" id="mark-all-as-read" class="flex items-center text-sm font-normal text-GrayishBlue hover:text-Blue">
+Mark all as read
+</button> </header> <ul class="mt-4 flex flex-col gap-4"> <li class="bg-VeryLightGrayishBlue unread flex gap-4 rounded-md p-4"> <img class="size-10" src="/assets/images/avatar-mark-webber.webp" alt="avatar mark webber"> <header class="flex gap-4"> <p class="text-sm text-GrayishBlue"> <a href="#" class="mr-1 font-bold capitalize text-VeryDarkBlue hover:text-Blue">mark webber </a> reacted to your recent post  <span class="ml-1 font-semibold text-DarkBrayishBlue hover:text-Blue">My first tournament today!</span>  <span class="point mx-1 inline-block size-2 rounded-full bg-Red"></span> <span class="block">1m ago</span>  </p> </header>  </li> <li class="bg-VeryLightGrayishBlue unread flex gap-4 rounded-md p-4"> <img class="size-10" src="/assets/images/avatar-angela-gray.webp" alt="avatar angela gray"> <header class="flex gap-4"> <p class="text-sm text-GrayishBlue"> <a href="#" class="mr-1 font-bold capitalize text-VeryDarkBlue hover:text-Blue">angela gray </a> followed you    <span class="point mx-1 inline-block size-2 rounded-full bg-Red"></span> <span class="block">5m ago</span>  </p> </header>  </li> <li class="bg-VeryLightGrayishBlue unread flex gap-4 rounded-md p-4"> <img class="size-10" src="/assets/images/avatar-jacob-thompson.webp" alt="avatar jacob thompson"> <header class="flex gap-4"> <p class="text-sm text-GrayishBlue"> <a href="#" class="mr-1 font-bold capitalize text-VeryDarkBlue hover:text-Blue">jacob thompson </a> has joined your group   <a href="#" class="font-semibold hover:text-Blue"> Chess Club </a> <span class="point mx-1 inline-block size-2 rounded-full bg-Red"></span> <span class="block">1 day ago</span>  </p> </header>  </li> <li class="bg-VeryLightGrayishBlue flex gap-4 rounded-md p-4"> <img class="size-10" src="/assets/images/avatar-rizky-hasanuddin.webp" alt="avatar rizky hasanuddin"> <header class="flex gap-4"> <p class="text-sm text-GrayishBlue"> <a href="#" class="mr-1 font-bold capitalize text-VeryDarkBlue hover:text-Blue">rizky hasanuddin </a> sent you a private message     <span class="block">5 day ago</span> <span class="mt-4 inline-block rounded-md border p-4 hover:cursor-pointer hover:bg-Blue hover:bg-opacity-20 "> Hello, thanks for setting up the Chess Club. I&#39;ve been a member for a few weeks now and 
+		I&#39;m already having lots of fun and improving my game. </span> </p> </header>  </li> <li class="bg-VeryLightGrayishBlue flex gap-4 rounded-md p-4"> <img class="size-10" src="/assets/images/avatar-kimberly-smith.webp" alt="avatar kimberly Smith"> <header class="flex gap-4"> <p class="text-sm text-GrayishBlue"> <a href="#" class="mr-1 font-bold capitalize text-VeryDarkBlue hover:text-Blue">kimberly Smith </a> commented on your picture    <span class="block">1 week ago</span>  </p> </header> <img class="ml-4 size-10 hover:cursor-pointer" src="/assets/images/image-chess.webp"> </li> <li class="bg-VeryLightGrayishBlue flex gap-4 rounded-md p-4"> <img class="size-10" src="/assets/images/avatar-nathan-peterson.webp" alt="avatar nathan peterson"> <header class="flex gap-4"> <p class="text-sm text-GrayishBlue"> <a href="#" class="mr-1 font-bold capitalize text-VeryDarkBlue hover:text-Blue">nathan peterson </a> reacted to your recent post <span class="ml-1 font-semibold text-DarkBrayishBlue hover:text-Blue">5 end-game strategies to increase your win rate</span>   <span class="block">2 week ago</span>  </p> </header>  </li> <li class="bg-VeryLightGrayishBlue flex gap-4 rounded-md p-4"> <img class="size-10" src="/assets/images/avatar-anna-kim.webp" alt="avatar anna kim"> <header class="flex gap-4"> <p class="text-sm text-GrayishBlue"> <a href="#" class="mr-1 font-bold capitalize text-VeryDarkBlue hover:text-Blue">anna kim </a> left the group  <a href="#" class="font-semibold hover:text-Blue"> Chess Club </a>  <span class="block">2 week ago</span>  </p> </header>  </li> </ul> </main>  </body></html> <script defer>
+	const unread = document.querySelectorAll('.unread')
+	const point = document.querySelectorAll('.point')
+	let number = document.getElementById('number')
+	const markAllAsRead = document.getElementById('mark-all-as-read')
+
+	number.textContent = unread.length
+	let count = unread.length
+
+	markAllAsRead.addEventListener('click', function markAll(e) {
+		unread.forEach((el, i) => {
+			unread[i].classList.remove('unread')
+			point[i].classList.add('hidden')
+			number.textContent = 0
+		})
+		markAllAsRead.removeEventListener('click', markAll)
+	})
+	unread.forEach((el, i) => {
+		el.addEventListener('click', function handleClick(e) {
+			point[i].classList.add('hidden')
+			unread[i].classList.remove('unread')
+			count--
+			number.textContent = count
+			el.removeEventListener('click', handleClick)
+		})
+	})
+</script>

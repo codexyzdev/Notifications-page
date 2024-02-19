@@ -1,0 +1,68 @@
+---
+interface Props {
+	image: string
+	name: string
+	link?: string
+	unread: boolean
+	picture?: string
+	content: string
+	time: string
+	post?: string
+	msg?: string
+}
+
+const { image, msg, name, post, time, content, link, unread, picture } = Astro.props
+---
+
+<li
+	class={unread
+		? 'bg-VeryLightGrayishBlue unread flex gap-4 rounded-md p-4'
+		: 'bg-VeryLightGrayishBlue flex gap-4 rounded-md p-4'}
+>
+	<img class="size-10" src={`/assets/images/avatar-` + image + `.webp`} alt={`avatar ` + name} />
+	<header class="flex gap-4">
+		<p class="text-sm text-GrayishBlue">
+			<a href="#" class="mr-1 font-bold capitalize text-VeryDarkBlue hover:text-Blue">{name} </a>
+
+			{content}
+			{
+				post ? (
+					<span class="ml-1 font-semibold text-DarkBrayishBlue hover:text-Blue">{post}</span>
+				) : (
+					''
+				)
+			}
+			{
+				link ? (
+					<a href="#" class="font-semibold hover:text-Blue">
+						{link}
+					</a>
+				) : (
+					''
+				)
+			}
+			{unread ? <span class="point mx-1 inline-block size-2 rounded-full bg-Red" /> : ''}
+			<span class="block">{time}</span>
+			{
+				msg ? (
+					<span class="mt-4 inline-block rounded-md border p-4 hover:cursor-pointer hover:bg-Blue hover:bg-opacity-20 ">
+						{msg}
+					</span>
+				) : (
+					''
+				)
+			}
+		</p>
+	</header>
+
+	{
+		picture ? (
+			<img
+				class="ml-4 size-10 hover:cursor-pointer"
+				src={`/assets/images/image-` + picture + `.webp`}
+			/>
+		) : (
+			''
+		)
+	}
+</li>

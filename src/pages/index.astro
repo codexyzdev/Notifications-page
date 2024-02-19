@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Header from '../components/Header.astro'
+import NotificationList from '../components/Notification-list.astro'
+---
+
+<Layout title="Welcome to Astro.">
+	<main class="mx-auto max-w-96 px-4 sm:max-w-3xl">
+		<Header />
+		<NotificationList />
+	</main>
+</Layout>
+
+<script defer>
+	const unread = document.querySelectorAll('.unread')
+	const point = document.querySelectorAll('.point')
+	let number = document.getElementById('number')
+	const markAllAsRead = document.getElementById('mark-all-as-read')
+
+	number.textContent = unread.length
+	let count = unread.length
+
+	markAllAsRead.addEventListener('click', function markAll(e) {
+		unread.forEach((el, i) => {
+			unread[i].classList.remove('unread')
+			point[i].classList.add('hidden')
+			number.textContent = 0
+		})
+		markAllAsRead.removeEventListener('click', markAll)
+	})
+	unread.forEach((el, i) => {
+		el.addEventListener('click', function handleClick(e) {
+			point[i].classList.add('hidden')
+			unread[i].classList.remove('unread')
+			count--
+			number.textContent = count
+			el.removeEventListener('click', handleClick)
+		})
+	})
+</script>

@@ -1,0 +1,62 @@
+---
+import Notification from './Notification.astro'
+---
+
+<ul class="mt-4 flex flex-col gap-4">
+	<Notification
+		name="mark webber"
+		image="mark-webber"
+		content="reacted to your recent post "
+		unread={true}
+		time="1m ago"
+		post="My first tournament today!"
+	/>
+	<Notification
+		name="angela gray"
+		image="angela-gray"
+		content="followed you "
+		unread={true}
+		time="5m ago"
+	/>
+	<Notification
+		name="jacob thompson"
+		image="jacob-thompson"
+		content="has joined your group "
+		unread={true}
+		link="Chess Club"
+		time="1 day ago"
+	/>
+	<Notification
+		name="rizky hasanuddin"
+		image="rizky-hasanuddin"
+		content="sent you a private message "
+		unread={false}
+		time="5 day ago"
+		msg=`Hello, thanks for setting up the Chess Club. I've been a member for a few weeks now and 
+		I'm already having lots of fun and improving my game.`
+	/>
+	<Notification
+		name="kimberly Smith"
+		image="kimberly-smith"
+		content="commented on your picture"
+		time="1 week ago"
+		picture="chess"
+		unread={false}
+	/>
+	<Notification
+		name="nathan peterson"
+		image="nathan-peterson"
+		content="reacted to your recent post"
+		time="2 week ago"
+		post="5 end-game strategies to increase your win rate"
+		unread={false}
+	/>
+	<Notification
+		name="anna kim"
+		image="anna-kim"
+		content="left the group"
+		link="Chess Club"
+		time="2 week ago"
+		unread={false}
+	/>
+</ul>
